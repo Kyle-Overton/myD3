@@ -78,7 +78,7 @@ function ready(movies) {
 
     const xScale = d3
         .scaleLinear()
-        .domain(xMax)
+        .domain([0,xMax])
         .range([0, width]);
 
     const yScale = d3.scaleBand()

@@ -1,7 +1,4 @@
-console.log("hello world2");
-d3.csv("/myD3/01-load/data/harry_potter.csv").then(res =>{
-    console.log('Local csv:', res);
-});
+console.log("hello world potter/rings");
 
 const potter = d3.csv('/myD3/01-load/data/harry_potter.csv');
 const rings = d3.csv('/myD3/01-load/data/lord_of_the_rings.csv');

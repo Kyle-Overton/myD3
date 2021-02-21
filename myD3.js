@@ -85,15 +85,21 @@ function ready(movies) {
         .domain(barChartData.map(d => d.genre))
         .rangeRound([0, height]);
 
-    debugger;
+    //debugger;
     // Draw base.
-    d3.select('.bar-chart-container')
+    const svg = d3
+        .select('.bar-chart-container')
         .append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
         .append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`)
+    // Draw bars.
+    const bars = svg
+        .selectAll('.bar')
+        .data([3,2,1])
 
+        debugger;
 }
 //Load data.
 d3.csv('/myD3/03/demos/module-03/before/02-prepare/data/movies.csv', type).then(res => {

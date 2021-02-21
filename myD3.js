@@ -1,5 +1,12 @@
 console.log("hello world2");
-d3.json("https://api.themoviedb.org/3/movie/550?api_key=3da51145ce2ec4a7e006cbba91c0f016"
-).then(res =>{
-    console.log('API json', res);
+d3.csv("/myD3/01-load/data/harry_potter.csv").then(res =>{
+    console.log('Local csv:', res);
+});
+
+const potter = d3.csv('/myD3/01-load/data/harry_potter.csv');
+const rings = d3.csv('/myD3/01-load/data/lord_of_the_rings.csv');
+
+Promise.all([potter,rings]).then(res =>{
+    console.log('Multiple requests: ', res);
+    console.log('Multiple requests concat: ', [...res[0], ...res[1]]);
 })

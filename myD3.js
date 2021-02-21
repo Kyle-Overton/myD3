@@ -1,4 +1,4 @@
-console.log("filtered Data");
+console.log("unfiltered Data");
 // Data preparation.
 function filterData(data) {
     return data.filter(d => {

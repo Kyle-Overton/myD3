@@ -1,5 +1,5 @@
 
-console.log("my NewMovie");
+console.log("my NewMovie Dos");
 const parseNA = string => (string === 'NA' ? undefined:string);
 const parseDate = string => d3.timeParse('%Y-%m-%d')(string);
 //Type Conversion

@@ -66,13 +66,12 @@ const height = 500 - margin.top - margin.bottom;
 
 // Scales.
 const xMax = d3.max(barChartData, d => d.revenue);
-const yExtent = d3.extent(barChartData, d => d.)
 
 const xScale = d3
     .scaleLinear()
     .domain(xMax )
     .range([0,width]);
-    
+
 const yScale = d3.scaleBand()
     .domain(barChartData.map(d => d.genre))
     .rangeRound([0,height]);

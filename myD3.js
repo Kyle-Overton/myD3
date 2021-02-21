@@ -1,8 +1,29 @@
-console.log("my NewMovie Dos");
+console.log("filtered Data");
+// Data preparation.
+function filterData(data){
+    return data.filter(d =>{
+        return( 
+            d.release_year > 1999 &&
+            d.release_year < 2010 &&
+            d.revenue > 0 &&
+            d.budget > 0 &&
+            d.genre &&
+            d.title
+        );
+        
+    })
+}
+//Main function.
+function ready(movies){
+    const moviesClean = filterData(movies);
+    console.log(moviesClean);
+}
+// Data utilities.
 const parseNA = string => (string === 'NA' ? undefined : string);
 const parseDate = string => d3.timeParse('%Y-%m-%d')(string);
 //Type Conversion
 function type(d) {
+    const date=parseDate(d.release_date);
     return {
         budget: +d.budget,
         genre: parseNA(d.genre),
@@ -15,7 +36,8 @@ function type(d) {
         popularity: +d.popularity,
         poster_path: parseNA(d.poster_path),
         production_countries: JSON.parse(d.production_countries),
-        release_date: parseDate(d.release_date),
+        release_date: date,
+        release_year: date.getFullYear(),
         revenue: +d.revenue,
         runtime: +d.runtime,
         tagline: parseNA(d.tagline),
@@ -26,5 +48,5 @@ function type(d) {
 }
 //Load data.
 d3.csv('/myD3/03/demos/module-03/before/02-prepare/data/movies.csv', type).then(res => {
-    console.log(res);
+    ready(res);
 })

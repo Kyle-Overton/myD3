@@ -57,7 +57,7 @@ function type(d) {
 //Main function.
 function ready(movies) {
     const moviesClean = filterData(movies);
-    const barChartData = prepareBarChartData(moviesClean).sort((a, b) => {
+    const barChartData = prepareBarChartData(moviesClean).split(/\s/).sort((a, b) => {
         return d3.descending(a.revenue - b.revenue);
     });
     console.log(barChartData);

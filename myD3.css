@@ -9,3 +9,7 @@ svg{
 .x line{
     stroke: white;
 }
+
+.bar:hover{
+    fill:green;
+}

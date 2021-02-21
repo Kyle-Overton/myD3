@@ -83,7 +83,8 @@ function ready(movies) {
 
     const yScale = d3.scaleBand()
         .domain(barChartData.map(d => d.genre))
-        .rangeRound([0, height]);
+        .rangeRound([0, height])
+        .paddingInner(0.25);
 
     //debugger;
     // Draw base.
@@ -105,6 +106,17 @@ function ready(movies) {
         .attr('width',d => xScale(d.revenue))
         .attr('height',yScale.bandwidth())
         .style('fill','dodgerblue');
+
+    // Draw axes.
+    const xAxis = d3
+        .axisTop(xScale)
+        .tickFormat(d3.format('~s'))
+        .tickSizeInner(-height)
+        .tickSizeOuter(0)
+    const xAxisDraw = svg
+        .append('g')
+        .attr('class','x axis')
+        .call(xAxis);
 }
 //Load data.
 d3.csv('/myD3/03/demos/module-03/before/02-prepare/data/movies.csv', type).then(res => {

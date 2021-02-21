@@ -85,7 +85,7 @@ function ready(movies) {
         .domain(barChartData.map(d => d.genre))
         .rangeRound([0, height]);
 
-    //debugger;
+    debugger;
     // Draw base.
     d3.select('.bar-chart-container')
         .append('svg')

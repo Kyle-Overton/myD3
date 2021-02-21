@@ -1,5 +1,5 @@
 
-console.log("hello world movies2");
+console.log("myNewMovie");
 const parseNA = string => (string === 'NA' ? undefined:string)
 const parseDate = string => d3.timeParse('%Y-%m-%d')(string);
 //Type Conversion

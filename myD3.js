@@ -1,5 +1,5 @@
-console.log("hello worlds");
-d3.csv("/01-load/data/harry_potter.csv").then(res =>{
+console.log("hello world2");
+d3.csv("/myD3/01-load/data/harry_potter.csv").then(res =>{
     console.log('Local csv:', res);
 });
 

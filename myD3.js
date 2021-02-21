@@ -1,4 +1,4 @@
-console.log("hello world");
+console.log("hello worlds");
 d3.csv("/01-load/data/harry_potter.csv").then(res =>{
     console.log('Local csv:', res);
 });

@@ -97,9 +97,14 @@ function ready(movies) {
     // Draw bars.
     const bars = svg
         .selectAll('.bar')
-        .data([3,2,1])
-
-        debugger;
+        .data(barChartData)
+        .enter()
+        .append('rect')
+        .attr('class','bar')
+        .attr('y', d=> yScale(d.genre))
+        .attr('width',d => xScale(d.revenue))
+        .attr('height',yScale.bandwidth())
+        .style('fill','dodgerblue');
 }
 //Load data.
 d3.csv('/myD3/03/demos/module-03/before/02-prepare/data/movies.csv', type).then(res => {

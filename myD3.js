@@ -29,6 +29,15 @@ function prepareBarChartData(data) {
 // Data utilities.
 const parseNA = string => (string === 'NA' ? undefined : string);
 const parseDate = string => d3.timeParse('%Y-%m-%d')(string);
+
+//Drawing utilities.
+function formatTicks(d){
+    return d3.format('~s')(d)
+        .replace('M', ' mil')
+        .replace('G', ' bil')
+        .replace('T', ' tril');
+}
+
 //Type Conversion
 function type(d) {
     const date = parseDate(d.release_date);
@@ -68,7 +77,7 @@ function ready(movies) {
         top: 40,
         right: 40,
         bottom: 40,
-        left: 40
+        left: 80
     };
     const width = 400 - margin.left - margin.right;
     const height = 500 - margin.top - margin.bottom;
@@ -110,13 +119,20 @@ function ready(movies) {
     // Draw axes.
     const xAxis = d3
         .axisTop(xScale)
-        .tickFormat(d3.format('~s'))
+        .tickFormat(formatTicks)
         .tickSizeInner(-height)
         .tickSizeOuter(0)
     const xAxisDraw = svg
         .append('g')
         .attr('class','x axis')
         .call(xAxis);
+
+    const yAxis = d3.axisLeft(yScale).tickSize(0)
+
+    const yAxisDraw = svg
+        .append('g')
+        .attr('class','y axis')
+        .call(yAxis);
 }
 //Load data.
 d3.csv('/myD3/03/demos/module-03/before/02-prepare/data/movies.csv', type).then(res => {

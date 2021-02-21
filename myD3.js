@@ -59,6 +59,18 @@ function type(d) {
         vote_count: d.vote_count
     };
 }
+// Margin convention.
+const margin = {top: 40, right: 40, bottom: 40, left: 40};
+const width = 400 - margin.left - margin.right;
+const height = 500 - margin.top - margin.bottom;
+
+// Draw base.
+d3.select('.bar-chart-container')
+    .append('svg')
+    .attr('width',width+margin.left+margin.right)
+    .attr('height',height+margin.top+margin.bottom)
+    .append('g')
+    .attr('transform',`translate(${margin.left},${margin.top})`)
 //Load data.
 d3.csv('/myD3/03/demos/module-03/before/02-prepare/data/movies.csv', type).then(res => {
     ready(res);
